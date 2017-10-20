@@ -55,6 +55,19 @@
           zoom: 8
         });
       }
+
+      document.getElementById("btn_sendmessage").onclick = function (){
+        var _lat = document.getElementById("input_lat").value;
+        var _lang = document.getElementById("input_lang").value;
+
+        _lat = parseInt(_lat);
+        _lang = parseInt(_lang);
+       
+        var center = new google.maps.LatLng(_lat, _lang);
+        // using global variable:
+        map.panTo(center);
+    }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXFycayCj9dYHAzQXx76oC4e4oTtdCl_A&callback=initMap"
     async defer></script>

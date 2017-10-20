@@ -1,4 +1,5 @@
-(function(){
+    var map;
+
     var app_container = document.getElementById("app_container");
     
     var calculatedHeight = ((document.documentElement.clientHeight || document.body.clientHeight) - 400) + 'px';
@@ -7,8 +8,6 @@
 
     app_container.style.top = calculatedHeight;
     app_container.style.left = calculatedWidth;
-
-
 
     (function setupDrag(container) {
         var selected = null, // Object of the element to be move
@@ -49,6 +48,7 @@
         document.onmouseup = _destroy;
     })(app_container);
 
-})();
+   
+
 
 
