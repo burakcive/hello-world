@@ -16,10 +16,37 @@
         margin: 0;
         padding: 0;
       }
+      #app_container{
+        height: 300px;
+        width: 400px;
+        z-index: 999999;
+        position: fixed;
+        /*top: 300px;
+        left: 600px;*/
+        border: 2px solid rgba(189, 177, 177, 0.712);
+        background: white;
+      }
+      .input_message{
+          width: 396px;
+      }
+      #multi_message{
+          max-width: 394px;
+          width: 394px;
+          max-height: 222px;
+          height: 222px;
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
+
+    <div id="app_container">
+            <input type="text" class="input_message" id="input_lat" placeholder="Latitude">
+            <input type="text" class="input_message" id="input_lang" placeholder="longitude">
+            <textarea  class="input_message"   id="multi_message" placeholder="Write something"></textarea>
+            <input type="button" class="input_message" id="btn_sendmessage" value="Send Message">
+    </div>
+
     <script>
       var map;
       function initMap() {
@@ -31,5 +58,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXFycayCj9dYHAzQXx76oC4e4oTtdCl_A&callback=initMap"
     async defer></script>
+    <script src="index.js"></script>
+    
   </body>
 </html>
