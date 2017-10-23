@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>The World</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -46,32 +46,10 @@
             <textarea  class="input_message"   id="multi_message" placeholder="Write something"></textarea>
             <input type="button" class="input_message" id="btn_sendmessage" value="Send Message">
     </div>
-
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-
-      document.getElementById("btn_sendmessage").onclick = function (){
-        var _lat = document.getElementById("input_lat").value;
-        var _lang = document.getElementById("input_lang").value;
-
-        _lat = parseInt(_lat);
-        _lang = parseInt(_lang);
-       
-        var center = new google.maps.LatLng(_lat, _lang);
-        // using global variable:
-        map.panTo(center);
-    }
-
-    </script>
+    <script src="index.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXFycayCj9dYHAzQXx76oC4e4oTtdCl_A&callback=initMap"
     async defer></script>
-    <script src="index.js"></script>
+    
     
   </body>
 </html>
