@@ -33,12 +33,10 @@
                 selected.style.top = (y_pos - y_elem) + 'px';
             }
         }
-
         // Destroy the object when we are done
         function _destroy() {
             selected = null;
         }
-
         // Bind the functions...
         container.onmousedown = function (e) {
             _drag_init(this);
