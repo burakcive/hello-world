@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test HTML Page</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h3>Messager</h3>
+    <h4>Number of Clients Online : <span id="span_clients"></span></h4>
+    <input type="text" id="txt_name" placeholder="Enter Your Name" />
+    <input type="text" id="txt_message" placeholder="Send a message" />
+    <input type="button" id="btn_send_message" value="Send" />
+
+    <ul id="messages_list"></ul>
+</body>
+
+</html>
+<script src="../Scripts/jquery-1.6.4.min.js"></script>
+<script src="../Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script src="../signalr/hubs"></script>
+
+<script type="text/javascript">
+    var messagerConnection = $.connection.messager;
+
+    messagerConnection.client.sendMessage = function (message) {
+        $("#messages_list").append("<li>" + message.Name + ": " + message.MessageToSend + "</li>");
+    }
+
+    messagerConnection.client.updateUsersOnlineCount = function(count)
+    {
+        $("#span_clients").html(count)
+    }
+
+    $.connection.hub.start().done(function () {
+        console.log("SignalR Connection Established");
+
+        $("#btn_send_message").click(function () {
+            let name = $("#txt_name").val();
+            let msgToSend = $("#txt_message").val();
+
+            let messageObj = {
+                Name : name,
+                MessageToSend: msgToSend
+            }
+
+            //send it to hub
+            messagerConnection.server.send(messageObj);
+        });
+    });
+
+</script>
+<script type="text/javascript">
+   
+</script>
