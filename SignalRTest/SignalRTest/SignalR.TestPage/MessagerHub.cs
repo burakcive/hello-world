@@ -15,7 +15,7 @@ namespace SignalRTest.SignalR.TestPage
         public static List<string> Users = new List<string>();
 
 
-        public void Send(Message message)
+        public void Send(PositionToMark message)
         {
             Clients.All.sendMessage(message);
         }
@@ -83,8 +83,15 @@ namespace SignalRTest.SignalR.TestPage
         }
     }
 
-    public class Message{
-        public string Name{ get; set; }
+    public class Message {
+        public string Name { get; set; }
         public string MessageToSend { get; set; }
+    }
+
+    public class PositionToMark
+    {
+        public int lat { get; set; }
+        public int lng { get; set; }
+        public string msg { get; set; }
     }
 }

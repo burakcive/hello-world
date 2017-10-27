@@ -41,15 +41,17 @@
     <div id="map"></div>
 
     <div id="app_container">
+            <input type="text" class="input_message" id="input_connectedcount" disabled="disabled">
             <input type="text" class="input_message" id="input_lat" placeholder="Latitude">
             <input type="text" class="input_message" id="input_lang" placeholder="longitude">
             <textarea  class="input_message"   id="multi_message" placeholder="Write something"></textarea>
             <input type="button" class="input_message" id="btn_sendmessage" value="Send Message">
     </div>
+    <script src="jquery-1.6.4.min.js"></script>
+    <script src="jquery.signalR-2.2.2.min.js"></script>
     <script src="index.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXFycayCj9dYHAzQXx76oC4e4oTtdCl_A&callback=initMap"
     async defer></script>
-    
     
   </body>
 </html>
