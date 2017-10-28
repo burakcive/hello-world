@@ -4,7 +4,7 @@ var signalR = {};
 
 var defaultLocation = { lat: 42, lng: 26 };
 
-var signalREndPoint = "http://5adba65c.ngrok.io";
+var signalREndPoint = "http://fdac011b.ngrok.io";
 
 signalR.connection = $.hubConnection(signalREndPoint + '/signalr/hubs', { useDefaultPath: false });
 
