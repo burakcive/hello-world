@@ -137,6 +137,19 @@ function initMap() {
     ]
   });
 
+  google.maps.event.addListener(map, "rightclick", function(event) {
+    
+        var lat = event.latLng.lat();
+    
+        var lng = event.latLng.lng();
+    
+        // populate yor box/field with lat, lng
+    
+      document.getElementById("input_lat").value = lat;
+      document.getElementById("input_lang").value = lng;
+    
+    });
+
   infoWindow = new google.maps.InfoWindow;
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
