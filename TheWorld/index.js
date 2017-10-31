@@ -4,7 +4,7 @@ var signalR = {};
 
 var defaultLocation = { lat: 42, lng: 26 };
 
-var signalREndPoint = "http://fdac011b.ngrok.io";
+var signalREndPoint = "http://localhost:49908/";
 
 signalR.connection = $.hubConnection(signalREndPoint + '/signalr/hubs', { useDefaultPath: false });
 
@@ -26,15 +26,17 @@ signalR.connection.start().done(function (e) {
     var _lat = document.getElementById("input_lat").value;
     var _lang = document.getElementById("input_lang").value;
     var _message = document.getElementById("multi_message").value;
-    _lat = parseInt(_lat);
-    _lang = parseInt(_lang);
+    var _userName = document.getElementById("input_userName").value;
+    
+    _lat = parseFloat(_lat);
+    _lang = parseFloat(_lang);
 
     var center = new google.maps.LatLng(_lat, _lang);
     // using global variable:
     map.panTo(center);
 
     //create Marker
-    var newPositionToMark = { lat: _lat, lng: _lang, msg: _message };
+    var newPositionToMark = { lat: _lat, lng: _lang, msg: _message ,userName : _userName};
 
     //send it to hub
     signalR.messagerProxy.invoke("send", newPositionToMark).done(function () {
@@ -150,7 +152,7 @@ function initMap() {
     
     });
 
-  infoWindow = new google.maps.InfoWindow;
+  /*infoWindow = new google.maps.InfoWindow;
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -169,7 +171,7 @@ function initMap() {
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
-  }
+  }*/
 
 }
 
@@ -183,7 +185,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function createMarker(positionToMark) {
   var infowindow = new google.maps.InfoWindow({
-    content: positionToMark.msg
+    content: "<div id='info_message_content'>"+ "<p style='font-weight:bold'>" + positionToMark.userName +"</p><p>"+ positionToMark.msg+ "</p></div>"
   });
 
   var marker = new google.maps.Marker({
@@ -194,10 +196,10 @@ function createMarker(positionToMark) {
   });
 
   infowindow.open(map, marker);
-  setTimeout(function () {
+  /*setTimeout(function () {
     infowindow.close();
     marker.setMap(null);
-  }, 10000);
+  }, 10000);*/
 }
 
 

@@ -17,7 +17,7 @@
         padding: 0;
       }
       #app_container{
-        height: 316px;
+        height: 340px;
         width: 400px;
         z-index: 999999;
         position: fixed;
@@ -35,6 +35,10 @@
           max-height: 222px;
           height: 222px;
       }
+
+      #info_message_content{
+        line-height: 0;
+      }
     </style>
   </head>
   <body>
@@ -42,6 +46,7 @@
 
     <div id="app_container">
             <input type="text" class="input_message" id="input_connectedcount" disabled="disabled">
+            <input type="text" class="input_message" id="input_userName" placeholder="Type your nickname">
             <input type="text" class="input_message" id="input_lat" placeholder="Latitude">
             <input type="text" class="input_message" id="input_lang" placeholder="longitude">
             <textarea  class="input_message"   id="multi_message" placeholder="Write something"></textarea>
